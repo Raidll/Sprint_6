@@ -14,7 +14,7 @@ class TestLogo:
 
         base_page = BasePage(driver)
         base_page.click_yandex_logo()
-        driver.switch_to.window(base_page.get_next_tab())
+        base_page.switch_window_to_next_tab()
         current_url = driver.current_url
 
         assert URLS.DZEN_URL in current_url

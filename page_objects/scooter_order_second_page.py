@@ -3,10 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from page_objects.base_page import BasePage
 
-class ScooterOrderSecondPage:
+
+class ScooterOrderSecondPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
 
     SCOOTER_DELIVERY_DATE = By.XPATH, ".//input[@placeholder='* Когда привезти самокат']"
     DROPDOWN_RENTAL_PERIOD = By.XPATH, ".//div[text()='* Срок аренды']"
@@ -20,40 +22,36 @@ class ScooterOrderSecondPage:
 
     @allure.step('Заполнить поле Дата')
     def fill_date(self, date):
-        self.driver.find_element(*self.SCOOTER_DELIVERY_DATE).send_keys(date)
+        self.fill_field_by_xpath(self.SCOOTER_DELIVERY_DATE, date)
 
     @allure.step('Клик по полю выбора периода аренды')
     def click_dropdown_rental_period(self):
-        self.driver.find_element(*self.DROPDOWN_RENTAL_PERIOD).click()
+        self.click_by_xpath(self.DROPDOWN_RENTAL_PERIOD)
 
     @allure.step('Выбрать период аренды один день')
     def click_rental_period_is_one_day(self):
-        self.driver.find_element(*self.RENTAL_PERIOD_IS_ONE_DAY).click()
+        self.click_by_xpath(self.RENTAL_PERIOD_IS_ONE_DAY)
 
     @allure.step('Выбрать чекбокс Черный')
     def click_checkbox_black(self):
-        self.driver.find_element(*self.CHECKBOX_BLACK).click()
+        self.click_by_xpath(self.CHECKBOX_BLACK)
 
     @allure.step('Заполнить поле комментария')
     def fill_comment(self, comment):
-        self.driver.find_element(*self.INPUT_COMMENT).send_keys(comment)
+        self.fill_field_by_xpath(self.INPUT_COMMENT, comment)
 
     @allure.step('Нажать кнопку Заказать')
     def click_order_button(self):
-        self.driver.find_element(*self.ORDER_BUTTON).click()
+        self.click_by_xpath(self.ORDER_BUTTON)
 
     @allure.step('Клик в стороннее место, чтобы скрыть календарь')
     def hide_calendar(self):
-        self.driver.find_element(*self.OUTSIDE).click()
+        self.click_by_xpath(self.OUTSIDE)
 
     @allure.step('Нажать кнопку подтверждения заказа')
     def click_accept_order_button(self):
-        self.driver.find_element(*self.ACCEPT_ORDER_BUTTON).click()
+        self.click_by_xpath(self.ACCEPT_ORDER_BUTTON)
 
     @allure.step('Ожидание видимости статуса заказа')
     def waiting_visibility_button_check_order_status(self):
-        WebDriverWait(self.driver, 3).until(
-            expected_conditions.visibility_of_element_located(self.CHECK_ORDER_STATUS))
-
-
-
+        self.waiting_visibility_by_xpath(self.CHECK_ORDER_STATUS)

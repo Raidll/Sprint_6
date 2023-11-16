@@ -1,10 +1,12 @@
 import allure
 from selenium.webdriver.common.by import By
 
+from page_objects.base_page import BasePage
 
-class ScooterOrderFirstPage:
+
+class ScooterOrderFirstPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
 
     INPUT_NAME = By.XPATH, ".//input[@placeholder='* Имя']"
     INPUT_SURNAME = By.XPATH, ".//input[@placeholder='* Фамилия']"
@@ -16,30 +18,30 @@ class ScooterOrderFirstPage:
 
     @allure.step('Заполнить поле Имя')
     def fill_name(self, name):
-        self.driver.find_element(*self.INPUT_NAME).send_keys(name)
+        self.fill_field_by_xpath(self.INPUT_NAME, name)
 
     @allure.step('Заполнить поле Фамилия')
     def fill_surname(self, surname):
-        self.driver.find_element(*self.INPUT_SURNAME).send_keys(surname)
+        self.fill_field_by_xpath(self.INPUT_SURNAME, surname)
 
     @allure.step('Заполнить поле Адресс')
     def fill_address(self, address):
-        self.driver.find_element(*self.INPUT_ADDRESS).send_keys(address)
+        self.fill_field_by_xpath(self.INPUT_ADDRESS, address)
 
     @allure.step('Заполнить поле Номер телефона')
     def fill_telephone_number(self, number):
-        self.driver.find_element(*self.INPUT_TELEPHONE_NUMBER).send_keys(number)
+        self.fill_field_by_xpath(self.INPUT_TELEPHONE_NUMBER, number)
 
     @allure.step('Нажать на выбор станции метро')
     def click_select_metro_station(self):
-        self.driver.find_element(*self.SELECT_METRO_STATION).click()
+        self.click_by_xpath(self.SELECT_METRO_STATION)
 
     @allure.step('Выбрать станция Черкизовская из списка')
     def click_cherkizovskaya_station(self):
-        self.driver.find_element(*self.CHERKIZOVSKAYA_STATION).click()
+        self.click_by_xpath(self.CHERKIZOVSKAYA_STATION)
 
     @allure.step('Клик по кнопке Далее')
     def click_button_next(self):
-        self.driver.find_element(*self.BUTTON_NEXT).click()
+        self.click_by_xpath(self.BUTTON_NEXT)
 
 
