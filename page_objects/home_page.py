@@ -14,6 +14,24 @@ class HomePage(BasePage):
 
     BOTTOM_ORDER_BUTTON = By.XPATH, ".//div[@class='Home_FinishButton__1_cWm']"
 
+    XPATH_FIRST_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-0']"
+    XPATH_SECOND_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-1']"
+    XPATH_THIRD_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-2']"
+    XPATH_FOURTH_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-3']"
+    XPATH_FIFTH_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-4']"
+    XPATH_SIXTH_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-5']"
+    XPATH_SEVENTH_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-6']"
+    XPATH_EIGHTH_QUESTION_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__heading-7']"
+
+    XPATH_FIRST_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-0']"
+    XPATH_SECOND_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-1']"
+    XPATH_THIRD_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-2']"
+    XPATH_FOURTH_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-3']"
+    XPATH_FIFTH_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-4']"
+    XPATH_SIXTH_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-5']"
+    XPATH_SEVENTH_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-6']"
+    XPATH_EIGHTH_ANSWER_ABOUT_IMPORTANT = By.XPATH, ".//div[@id='accordion__panel-7']"
+
     @allure.step('Клик по верхней кнопке Заказать')
     def click_top_order_button(self):
         self.click_by_xpath(self.TOP_ORDER_BUTTON)
